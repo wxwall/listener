@@ -1,6 +1,8 @@
 package com.asiaInfo.scheduled;
 
+import com.asiaInfo.model.Message;
 import com.asiaInfo.scheduled.async.Task;
+import com.asiaInfo.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,11 @@ public class ScheduledTasks {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
+
+    @Autowired
+    MessageService messageService;
+
+
     @Autowired
     private Task task;
 
@@ -24,7 +31,21 @@ public class ScheduledTasks {
 
         long start = System.currentTimeMillis();
 
-        Future<String> task1 = task.doTaskOne();
+        int typeCds [] = {102,103,104,111,129,134};
+        String teamKeys [] = {"8440000","8320000"};
+
+        Future<String> task1 = null;
+        for (int typeCd : typeCds) {
+            Message message = new Message();
+            message.setMsgTypeCd(typeCd);
+            for (String teamKey : teamKeys){
+                message.setTeamKey(teamKey);
+                task1 = task.doTaskOne(message);
+
+            }
+
+        }
+
         Future<String> task2 = task.doTaskTwo();
 
         while(true) {

@@ -8,8 +8,8 @@ package com.asiaInfo.common;
  */
 public enum  RoutConstants {
 
-    guangdong("832000","广东"),
-    jiangshu("834000","江苏");
+    guangdong("8440000","广东"),
+    jiangshu("8320000","江苏");
 
 
 

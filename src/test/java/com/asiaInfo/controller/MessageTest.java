@@ -43,7 +43,7 @@ public class MessageTest  {
     //测试广东数据源
     @Test
     public void test3() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/test3?rout=834000").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/test3?rout=8440000").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
@@ -51,7 +51,7 @@ public class MessageTest  {
     //测试江苏数据源
     @Test
     public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/test3?rout=832000").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/test3?rout=8320000").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 }

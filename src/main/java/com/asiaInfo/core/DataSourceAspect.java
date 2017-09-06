@@ -47,6 +47,11 @@ public class DataSourceAspect {
      * @param message
      */
     private void setRouting(Message message) throws MyException {
+        if(message.getRoute() == null){
+            message.setRoute(message.getTeamKey());
+        }if(message.getRoute() == null){
+            throw new MyException("请在入参里设置路由routId");
+        }
         if(message.getRoute().equals(RoutConstants.jiangshu.getCode())){
             DatabaseContextHolder.setDatabaseType(DatabaseType.jianshu);
         }else if(message.getRoute().equals(RoutConstants.guangdong.getCode())){
