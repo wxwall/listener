@@ -1,5 +1,6 @@
 package com.asiaInfo.scheduled;
 
+import com.asiaInfo.common.ConstantsParam;
 import com.asiaInfo.model.Message;
 import com.asiaInfo.scheduled.async.Task;
 import com.asiaInfo.service.MessageService;
@@ -23,36 +24,47 @@ public class ScheduledTasks {
     @Autowired
     MessageService messageService;
 
+    @Autowired
+    private ConstantsParam Constants;
+
 
     @Autowired
     private Task task;
 
-    public void task() throws Exception {
+    public void task()  {
 
         long start = System.currentTimeMillis();
 
-        int typeCds [] = {102,103,104,111,129,134};
-        String teamKeys [] = {"8440000","8320000"};
+        int typeCds [] = Constants.getMsgType();
+        String teamKeys [] = Constants.getTeamKeys();
 
         Future<String> task1 = null;
+        Future<String> task2 = null;
         for (int typeCd : typeCds) {
             Message message = new Message();
             message.setMsgTypeCd(typeCd);
             for (String teamKey : teamKeys){
                 message.setTeamKey(teamKey);
-                task1 = task.doTaskOne(message);
-
+                try {
+                    task1 = task.doTaskOne(message);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    task2 = task.doTaskTwo();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
         }
 
-        Future<String> task2 = task.doTaskTwo();
-
         while(true) {
             if(task1.isDone() && task2.isDone()) {
-                // 三个任务都调用完成，退出循环等待
+                // 任务都调用完成，退出循环等待
                 break;
             }
+
         }
 
         long end = System.currentTimeMillis();

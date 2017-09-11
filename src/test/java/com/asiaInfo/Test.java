@@ -1,16 +1,13 @@
 package com.asiaInfo;
 
-import com.asiaInfo.common.RoutConstants;
-
 /**
  * Created by wxwall on 2017/9/2.
  */
 public class Test {
     public static void main(String[] args) {
-        RoutConstants.guangdong.getCode();
+        int finalStr = 0x00000010;
+        System.out.println(~finalStr);
+        finalStr  = 0x00000011;
 
-        for(RoutConstants aa : RoutConstants.values()){
-            System.out.println(aa.getCode());
-        }
     }
 }
