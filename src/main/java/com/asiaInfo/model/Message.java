@@ -58,6 +58,8 @@ public class Message extends BaseModel implements Serializable {
 
 	private String teamKey;
 
+	private String ip;
+
 	public Message() {
 
 	}
@@ -239,6 +241,15 @@ public class Message extends BaseModel implements Serializable {
 	}
 
 
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Message{" +
@@ -264,6 +275,70 @@ public class Message extends BaseModel implements Serializable {
 				", param3='" + param3 + '\'' +
 				", batchNum='" + batchNum + '\'' +
 				", teamKey='" + teamKey + '\'' +
+				", ip='" + ip + '\'' +
 				'}';
+	}
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Message message = (Message) o;
+
+		if (msgId != null ? !msgId.equals(message.msgId) : message.msgId != null) return false;
+		if (msgTypeCd != null ? !msgTypeCd.equals(message.msgTypeCd) : message.msgTypeCd != null) return false;
+		if (msgContent != null ? !msgContent.equals(message.msgContent) : message.msgContent != null) return false;
+		if (grpId != null ? !grpId.equals(message.grpId) : message.grpId != null) return false;
+		if (grpSeq != null ? !grpSeq.equals(message.grpSeq) : message.grpSeq != null) return false;
+		if (grpTotal != null ? !grpTotal.equals(message.grpTotal) : message.grpTotal != null) return false;
+		if (grpOver != null ? !grpOver.equals(message.grpOver) : message.grpOver != null) return false;
+		if (sortDt != null ? !sortDt.equals(message.sortDt) : message.sortDt != null) return false;
+		if (commonRegionId != null ? !commonRegionId.equals(message.commonRegionId) : message.commonRegionId != null)
+			return false;
+		if (dealFlag != null ? !dealFlag.equals(message.dealFlag) : message.dealFlag != null) return false;
+		if (createDt != null ? !createDt.equals(message.createDt) : message.createDt != null) return false;
+		if (readDt != null ? !readDt.equals(message.readDt) : message.readDt != null) return false;
+		if (modifyDt != null ? !modifyDt.equals(message.modifyDt) : message.modifyDt != null) return false;
+		if (finishDt != null ? !finishDt.equals(message.finishDt) : message.finishDt != null) return false;
+		if (remark != null ? !remark.equals(message.remark) : message.remark != null) return false;
+		if (busiDesc != null ? !busiDesc.equals(message.busiDesc) : message.busiDesc != null) return false;
+		if (listenerDesc != null ? !listenerDesc.equals(message.listenerDesc) : message.listenerDesc != null)
+			return false;
+		if (param1 != null ? !param1.equals(message.param1) : message.param1 != null) return false;
+		if (param2 != null ? !param2.equals(message.param2) : message.param2 != null) return false;
+		if (param3 != null ? !param3.equals(message.param3) : message.param3 != null) return false;
+		if (batchNum != null ? !batchNum.equals(message.batchNum) : message.batchNum != null) return false;
+		if (teamKey != null ? !teamKey.equals(message.teamKey) : message.teamKey != null) return false;
+		return ip != null ? ip.equals(message.ip) : message.ip == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = msgId != null ? msgId.hashCode() : 0;
+		result = 31 * result + (msgTypeCd != null ? msgTypeCd.hashCode() : 0);
+		result = 31 * result + (msgContent != null ? msgContent.hashCode() : 0);
+		result = 31 * result + (grpId != null ? grpId.hashCode() : 0);
+		result = 31 * result + (grpSeq != null ? grpSeq.hashCode() : 0);
+		result = 31 * result + (grpTotal != null ? grpTotal.hashCode() : 0);
+		result = 31 * result + (grpOver != null ? grpOver.hashCode() : 0);
+		result = 31 * result + (sortDt != null ? sortDt.hashCode() : 0);
+		result = 31 * result + (commonRegionId != null ? commonRegionId.hashCode() : 0);
+		result = 31 * result + (dealFlag != null ? dealFlag.hashCode() : 0);
+		result = 31 * result + (createDt != null ? createDt.hashCode() : 0);
+		result = 31 * result + (readDt != null ? readDt.hashCode() : 0);
+		result = 31 * result + (modifyDt != null ? modifyDt.hashCode() : 0);
+		result = 31 * result + (finishDt != null ? finishDt.hashCode() : 0);
+		result = 31 * result + (remark != null ? remark.hashCode() : 0);
+		result = 31 * result + (busiDesc != null ? busiDesc.hashCode() : 0);
+		result = 31 * result + (listenerDesc != null ? listenerDesc.hashCode() : 0);
+		result = 31 * result + (param1 != null ? param1.hashCode() : 0);
+		result = 31 * result + (param2 != null ? param2.hashCode() : 0);
+		result = 31 * result + (param3 != null ? param3.hashCode() : 0);
+		result = 31 * result + (batchNum != null ? batchNum.hashCode() : 0);
+		result = 31 * result + (teamKey != null ? teamKey.hashCode() : 0);
+		result = 31 * result + (ip != null ? ip.hashCode() : 0);
+		return result;
 	}
 }

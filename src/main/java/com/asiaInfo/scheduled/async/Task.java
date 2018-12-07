@@ -21,11 +21,13 @@ public class Task {
 
     private Logger logger = Logger.getLogger(getClass());
 
-    BlockingQueue<List<Message>> blockingQueue = new ArrayBlockingQueue<List<Message>>(300);
+    BlockingQueue<List<Message>> blockingQueue = new ArrayBlockingQueue<List<Message>>(10);
 
 
     @Autowired
     MessageService messageService;
+
+
 
 
     @Async("readExecutor")
@@ -33,6 +35,7 @@ public class Task {
         logger.info("读任务开始");
         List<Message> messages = null;
         try {
+            //TODO 多线程读数据，重复读问题
             messages  = messageService.queryMessageByTypeCd(message);
 
         }catch (Exception e){
@@ -45,8 +48,8 @@ public class Task {
     @Async("processExecutor")
     public Future<String> doTaskTwo() throws Exception {
         logger.info("处理任务开始");
-       /* List<Message> messages = blockingQueue.take();
-        List<Message> processMessage = messageService.processMessage(messages);*/
+        List<Message> messages = blockingQueue.take();
+        List<Message> processMessage = messageService.processMessage(messages);
         return new AsyncResult<>("任务二完成");
     }
 

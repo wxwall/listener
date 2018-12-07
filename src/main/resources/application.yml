@@ -1,0 +1,45 @@
+# 多环境配置文件激活属性
+spring.profiles.active: dev
+
+listener: #自定义的属性和值
+  #本机支持的消息类型
+  msgType: 102,103,104,111,129,134
+  #本机支持的路由配置,与省份的commonRegionId对应
+  teamKeys: 8440000,8320000
+  #如果侦听表里没填IP，那么默认下面的IP做处理
+  defaultIP: 10.128.90.194,localhost
+  #默认端口
+  defaultPort: 8888
+  #一次查询返回条数
+  resultNum: 1
+  listProp1:
+    - name: abc
+      value: abcValue
+    - name: efg
+      value: efgValue
+  listProp2:
+    - config2Value1
+    - config2Vavlue2
+  msgTypeToURL:
+    101: SoWeb/service/intf.soService/updatePreArchiveOrderListByOlId
+    102: SoWeb/service/intf.soService/listenForProv
+    103: SoWeb/service/intf.soService/updateOrderItemGrpArchiveAndCheck
+
+
+
+
+
+#最大连接数
+http.maxTotal: 100
+#并发数
+http.defaultMaxPerRoute: 20
+#创建连接的最长时间
+http.connectTimeout: 10000
+#从连接池中获取到连接的最长时间
+http.connectionRequestTimeout: 500
+#数据传输的最长时间
+http.socketTimeout: 10000
+#提交请求前测试连接是否可用
+http.staleConnectionCheckEnabled: true
+
+

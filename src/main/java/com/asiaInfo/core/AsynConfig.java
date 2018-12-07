@@ -17,21 +17,21 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class AsynConfig {
 
     /** Set the ThreadPoolExecutor's core pool size. */
-    private int corePoolSize_read = 5;
+    private int corePoolSize_read = 1;
     /** Set the ThreadPoolExecutor's maximum pool size. */
-    private int maxPoolSize_read = 10;
+    private int maxPoolSize_read = 2;
     /** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */
-    private int queueCapacity_read = 3000;
+    private int queueCapacity_read = 100;
 
     private String ThreadNamePrefix_read = "readExecutor-";
 
 
     /** Set the ThreadPoolExecutor's core pool size. */
-    private int corePoolSize_process = 5;
+    private int corePoolSize_process = 1;
     /** Set the ThreadPoolExecutor's maximum pool size. */
-    private int maxPoolSize_process = 10;
+    private int maxPoolSize_process = 2;
     /** Set the capacity for the ThreadPoolExecutor's BlockingQueue. */
-    private int queueCapacity_process = 3000;
+    private int queueCapacity_process = 100;
 
     private String ThreadNamePrefix_process = "proExecutor-";
 

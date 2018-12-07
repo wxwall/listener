@@ -1,0 +1,16 @@
+# 服务端口
+server.port: 1111
+
+#日志输出级别
+logging.level.com.asiaInfo: INFO
+
+spring.datasource.primary.driver-class-name: com.mysql.jdbc.Driver
+spring.datasource.primary.url: jdbc:mysql://localhost:3306/database1?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+spring.datasource.primary.username: root
+spring.datasource.primary.password: 5776326
+
+
+spring.datasource.secondary.driver-class-name: com.mysql.jdbc.Driver
+spring.datasource.secondary.url: jdbc:mysql://localhost:3306/database2?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+spring.datasource.secondary.username: root
+spring.datasource.secondary.password: 5776326
